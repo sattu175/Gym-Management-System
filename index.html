@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Gym Management System</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header section -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">GymManagement</div>
+          <div class="nav-links">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#members">Members</a>
+            <a href="#trainers">Trainers</a>
+            <a href="#classes">Classes</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- main content -->
+    <main>
+      <section class="hero" id="dashboard">
+        <h1>Manage Your Gym Professionally</h1>
+        <p>
+          Streamlined member management, class scheduling, and trainer
+          assignment all in one place.
+        </p>
+        <button
+          class="btn-primary"
+          onclick="document.getElementById('member-form').scrollIntoView({behavior:'smooth'})"
+        >
+          Add New Member
+        </button>
+      </section>
+
+      <!-- members -->
+      <section id="members">
+        <h2>Members</h2>
+        <form id="member-form" onsubmit="return addMember(event)">
+          <label for="member-name">Full Name</label>
+          <input id="member-name" type="text" required placeholder="Jane Doe" />
+
+          <label for="member-email">Email</label>
+          <input
+            id="member-email"
+            type="email"
+            required
+            placeholder="jane@example.com"
+          />
+
+          <label for="member-phone">Phone Number</label>
+          <input
+            id="member-phone"
+            type="tel"
+            pattern="^\+?[0-9\s\-]{7,15}$"
+            placeholder="+1 555 123 4567"
+          />
+
+          <label for="member-plan">Membership Plan</label>
+          <select id="member-plan" required>
+            <option value="" disabled selected>Select s plan</option>
+            <option value="Basic(Gym access)">Basic(Gym access)</option>
+            <option value="Premium(Gym + Classes)">
+              Premium(Gym + Classes)
+            </option>
+            <option value="VIP(All inclusive)">VIP(All inclusive)</option>
+          </select>
+
+          <button type="submit" class="form-submit">Add Member</button>
+        </form>
+
+        <table id="members-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Plan</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <button
+          onclick="clearmembers()"
+          class="form-submit"
+          style="margin-top: 1rem; background: #ef4444"
+        >
+          Clear All Members
+        </button>
+      </section>
+
+      <!-- trainer section -->
+      <section id="trainers">
+        <h2>Trainers</h2>
+        <div class="features-grid">
+          <div class="card">
+            <h3>John</h3>
+            <p>Specially: Weight Training, Strength Conditioning</p>
+          </div>
+          <div class="card">
+            <h3>Rohan Shetty</h3>
+            <p>Speciality: Yoga, Flexibility, Mindfulness</p>
+          </div>
+          <div class="card">
+            <h3>Micheal Lee</h3>
+            <p>Speciality: Cardio, Endurance Trainig</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- class and schedule section -->
+      <section id="classes">
+        <h2>Classes & Schedules</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Class Name</th>
+              <th>Trainer</th>
+              <th>Day</th>
+              <th>Time</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Morning Yoga</td>
+              <td>Rohan Shetty</td>
+              <td>Monday</td>
+              <td>7am-8am</td>
+              <td class="actions"><button>Edit</button></td>
+            </tr>
+            <tr>
+              <td>Weight Training</td>
+              <td>John</td>
+              <td>Wednesday</td>
+              <td>6am-7am</td>
+              <td class="actions"><button>Edit</button></td>
+            </tr>
+            <tr>
+              <td>Cardio Blast</td>
+              <td>Micheal Lee</td>
+              <td>Friday</td>
+              <td>5pm-6pm</td>
+              <td class="actions"><button>Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- contact & support -->
+      <section id="contact">
+        <h2>Contact & Support</h2>
+        <form id="contact-form" onsubmit="return false;">
+          <label for="contact-name">Full-Name</label>
+          <input
+            id="contact-name"
+            type="text"
+            required
+            placeholder="Jane Doe"
+          />
+          <label for="contact-email">Email</label>
+          <input
+            id="contact-email"
+            type="email"
+            required
+            placeholder="jane@example.com"
+          />
+
+          <label for="contact-message">Message</label>
+          <textarea
+            id="contact-message"
+            rows="5"
+            placeholder="How can we help you?"
+          ></textarea>
+
+          <button
+            type="submit"
+            class="form-submit"
+            onclick="alert('Thank you! We will contact you soon.'); document.getElementById('contact-form').reset();"
+          >
+            Submit
+          </button>
+        </form>
+      </section>
+    </main>
+    <!-- footer section -->
+    <footer>
+      <p>&copy; 2025 GymManagement Inc.| All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
